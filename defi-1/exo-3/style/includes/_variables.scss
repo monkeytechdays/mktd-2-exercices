@@ -1,0 +1,23 @@
+// Colors
+
+$white: #fff;
+$black: #000;
+
+$blue: #0059b2;
+$green: #00b200;
+$purple: #b200b2;
+$maroon: #b25900;
+
+// Header
+$headerBg: $blue; 
+$headerTxt: $white; 
+$headerHeight: 3rem;
+
+// Main
+$mainBg: $white; 
+$mainTxt: lighten($black, 12%);
+
+// Footer
+$footerBg: $mainTxt; 
+$footerTxt: $mainBg;
+$footerHeight: 3rem;
