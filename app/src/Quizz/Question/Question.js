@@ -7,6 +7,6 @@ const label = 'Quel est ce singe ?'
 export default (props) => (
   <div className='main'>
     <Photo photo={props.question.img} label={label} />
-    <Content label={label} answers={props.question.responses} onNext={props.onNext} />
+    <Content label={label} answers={props.question.responses} answer={props.answer} onSubmit={props.onSubmitAnswer} />
   </div>
 )

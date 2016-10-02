@@ -2,10 +2,10 @@ import React from 'react'
 import AnswerList from './AnswerList'
 
 class Form extends React.Component {
-  constructor () {
+  constructor (props) {
     super()
     this.state = {
-      answer: null
+      answer: props.answer || null
     }
     this.onSelectAnswer = this.onSelectAnswer.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -14,7 +14,7 @@ class Form extends React.Component {
   componentWillUpdate (props) {
     if (this.props !== props) {
       this.setState({
-        answer: null
+        answer: props.answer || null
       })
     }
   }
@@ -43,7 +43,7 @@ class Form extends React.Component {
 const Content = (props) => (
   <div className="question">
     <h2>{props.label}</h2>
-    <Form answers={props.answers} onSubmit={props.onNext} />
+    <Form answers={props.answers} answer={props.answer} onSubmit={props.onSubmit} />
   </div>
 )
 

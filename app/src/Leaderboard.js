@@ -1,5 +1,6 @@
 import React from 'react'
-import {HOC as FetcherHOC, fetchLeaderboard} from './utils/fetcher'
+import {fetchLeaderboard} from './utils/Requests/apiRequests'
+import Fetcher from './utils/Requests/Fetcher'
 
 const Board = ({data}) => <ul>
   {data.map((line, index) => <li key={index}>
@@ -14,6 +15,6 @@ const Leaderboard = ({loading, data}) => <div>
     : <Board data={data} />}
 </div>
 
-export default FetcherHOC({
+export default Fetcher({
   propsToRequest: (props) => fetchLeaderboard()
 })(Leaderboard)
