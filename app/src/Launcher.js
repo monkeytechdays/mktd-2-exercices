@@ -1,6 +1,8 @@
 import React from 'react'
 import {withRouter} from 'react-router'
 import ServiceSubscriber from './utils/Services/ServiceSubscriber'
+import Button from './utils/View/Button'
+import './Launcher.css'
 
 class Launcher extends React.Component {
   constructor () {
@@ -34,13 +36,16 @@ class Launcher extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1>Bienvenue sur MonkeyQuizz</h1>
+      <div className='launcher'>
+        <div>
+          <h2>Bienvenue sur Monkey Quizz</h2>
 
-        <form onSubmit={this.onSubmit}>
-          <label></label>
-          <input name='username' value={this.state.username} onChange={this.onChange('username')}/>
-        </form>
+          <form onSubmit={this.onSubmit}>
+            <label htmlFor='username'>Pseudo</label>
+            <input name='username' id='username' value={this.state.username} onChange={this.onChange('username')} />
+            <Button>Démarrer un quizz</Button>
+          </form>
+        </div>
       </div>
     )
   }

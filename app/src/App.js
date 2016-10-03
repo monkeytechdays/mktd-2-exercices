@@ -1,16 +1,17 @@
 import React from 'react'
+import './Layout/Layout.css'
 import Header from './Layout/Header'
 import Footer from './Layout/Footer'
 import UserService from './utils/Services/UserService'
 import ServiceContainer from './utils/Services/ServiceContainer'
 
-function App ({children}) {
+const App = (props) => {
   // Les children est la route fille qui est matchée dans src/index.js
   return (
-    <div className='body'>
+    <div className='layout'>
       <Header />
-      <main>
-        {children}
+      <main className='main'>
+        {props.children}
       </main>
       <Footer />
     </div>

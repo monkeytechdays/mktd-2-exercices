@@ -1,0 +1,29 @@
+.button {
+  min-width: 200px;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background: #3eb5ee;
+  border: 0;
+  border-bottom: 2px solid #6494c1;
+  border-top: 1px solid white;
+  border-radius: 0.3em;
+}
+.button:not([disabled]) {
+  cursor: pointer;
+}
+.button[disabled] {
+  background: #aaa;
+  border-top-color: #888;
+  border-bottom-color: white;
+}
+.button:not([disabled]):hover, .button:not([disabled]):focus {
+  padding-top: calc(0.5em - 1px);
+  border-bottom-width: 3px;
+  border-top-color: #3eb5ee;
+}
+.button:active {
+  border-top-width: 2px;
+  border-bottom-width: 1px;
+}

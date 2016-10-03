@@ -1,5 +1,7 @@
 import React from 'react'
 import AnswerList from './AnswerList'
+import Button from '../../utils/View/Button'
+import './Question.css'
 
 class Form extends React.Component {
   constructor (props) {
@@ -32,16 +34,16 @@ class Form extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className='question-form'>
         <AnswerList answers={this.props.answers} selected={this.state.answer} onSelectAnswer={this.onSelectAnswer} />
-        <button type="submit" disabled={!this.state.answer}>Valider</button>
+        <Button disabled={!this.state.answer}>Valider</Button>
       </form>
     )
   }
 }
 
 const Content = (props) => (
-  <div className="question">
+  <div className="question-content">
     <h2>{props.label}</h2>
     <Form answers={props.answers} answer={props.answer} onSubmit={props.onSubmit} />
   </div>

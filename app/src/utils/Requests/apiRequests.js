@@ -2,7 +2,7 @@ export const fetchLeaderboard = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve([
       {
-        "score": 12,
+        "score": 3,
         "duration": 1230,
         "username": "Plop"
       },
@@ -12,9 +12,24 @@ export const fetchLeaderboard = () => {
         "username": "Plop"
       },
       {
-        "score": 0,
+        "score": 5,
         "duration": 8023,
         "username": "Julien"
+      },
+      {
+        "score": 35,
+        "duration": 8023,
+        "username": "Alfred"
+      },
+      {
+        "score": 1,
+        "duration": 8023,
+        "username": "Hubert de la marne"
+      },
+      {
+        "score": 3,
+        "duration": 8023,
+        "username": "Julien2"
       }
     ]), 200)
   })

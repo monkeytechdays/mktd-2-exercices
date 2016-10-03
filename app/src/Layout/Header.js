@@ -6,7 +6,7 @@ const Header = (props) => {
   const user = props.userService.data
   return (
     <header className="header">
-      <div className="brand"><Link to='/'><h1>Quizz Monkeys</h1></Link></div>
+      <div className="brand"><Link to='/'><h1>Monkey Quizz</h1></Link></div>
       <div className="user">{user || 'Anonyme'}</div>
     </header>
   )

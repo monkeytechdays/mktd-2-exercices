@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default (props) => (
-  <div className="photo">
+  <div className="question-photo">
     <img src={props.photo} alt={props.label} />
   </div>
 )

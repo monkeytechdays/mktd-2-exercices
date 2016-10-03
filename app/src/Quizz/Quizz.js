@@ -13,8 +13,6 @@ const CurrentStep = ({currentQuestion, quizzId, currentQuestionIndex, onSubmitAn
 </div>
 
 export default({loading, ...props}) => <div>
-  <h1>Quizz</h1>
-
   {loading
     ? <p>Démarrage en cours...</p>
     : <CurrentStep {...props} />}
