@@ -1,0 +1,41 @@
+.question-photo img {
+  width: 100%;
+}
+
+.question h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.5em 0;
+}
+
+@media screen and (min-width: 600px) {
+  .question {
+    display: flex;
+    align-items: center;
+  }
+
+  .question-photo {
+    flex: 3;
+  }
+
+  .question-content {
+    flex: 2;
+  }
+}
+
+.question-form {
+}
+
+.question-form .answers {
+  margin: 1em 0;
+  margin-left: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-form .answers label {
+  margin: 0.5em 0;
+}
+.question-form .answers input {
+  margin-right: 1em;
+}

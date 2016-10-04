@@ -1,0 +1,12 @@
+{
+  "id": "aze123",
+  "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Gorilla_Eating.jpg/640px-Gorilla_Eating.jpg",
+  "type": "radio",
+  "values": [
+    "alouate",
+    "babouin",
+    "capucin",
+    "gorille",
+    "orang-outan"
+  ]
+}
