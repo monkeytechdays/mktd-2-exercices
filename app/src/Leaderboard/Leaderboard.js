@@ -2,6 +2,7 @@ import React from 'react'
 import {fetchLeaderboard} from '../utils/Requests/apiRequests'
 import Fetcher from '../utils/Requests/Fetcher'
 import BarChart from './BarChart'
+import Legend from './Legend'
 import './Leaderboard.css'
 
 const Board = ({data}) => {
@@ -19,12 +20,13 @@ const Board = ({data}) => {
 
   return <div>
     <BarChart data={totalScoreArray} />
+    <Legend>Points cumulés</Legend>
   </div>
 }
 
 const Leaderboard = ({loading, data}) => {
-  return <div>
-    <h1>Leaderboard</h1>
+  return <div className='leaderboard'>
+    <h2>Leaderboard</h2>
     {loading
       ? <p>Chargement en cours...</p>
     : <Board data={data} />}

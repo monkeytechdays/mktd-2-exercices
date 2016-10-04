@@ -24,7 +24,7 @@ export const fetchLeaderboard = () => {
       {
         "score": 1,
         "duration": 8023,
-        "username": "Hubert de la marne"
+        "username": "Hubert"
       },
       {
         "score": 3,

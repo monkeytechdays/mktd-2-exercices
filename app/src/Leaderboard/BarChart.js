@@ -1,7 +1,7 @@
 import React from 'react'
 import {StaggeredMotion, spring} from 'react-motion'
 
-const maxWidth = 200
+const maxWidth = 400
 const maxHeight = 200
 const heightSecurity = 40
 

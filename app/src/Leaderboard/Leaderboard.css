@@ -1,3 +1,14 @@
+.leaderboard {
+  margin: 10vh auto 0;
+  max-width: 400px;
+}
+
+.leaderboard h2 {
+  font-size: 1.5em;
+  text-align: center;
+  font-weight: bold;
+}
+
 svg.reversed {
 }
 
@@ -7,4 +18,9 @@ svg.reversed {
 
 .scoreBar-score {
   fill: white;
+}
+
+.legend {
+  margin: 1em 0;
+  text-align: center;
 }
