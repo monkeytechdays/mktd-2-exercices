@@ -1,4 +1,7 @@
+const API_BASE_URL = 'http://localhost:8080/api'
+
 export const fetchLeaderboard = () => {
+  return fetch(`${API_BASE_URL}/leaderboard`)
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve([
       {
@@ -24,7 +27,7 @@ export const fetchLeaderboard = () => {
       {
         "score": 1,
         "duration": 8023,
-        "username": "Hubert"
+        "username": "Hubert²"
       },
       {
         "score": 3,
