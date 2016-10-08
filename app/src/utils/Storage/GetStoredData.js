@@ -27,7 +27,7 @@ export default ({ storageKey, storageToProps, checkResult }) => (BaseComponent) 
 
     componentWillMount () {
       const data = JSON.parse(localStorage.getItem(storageKey))
-      if (typeof checkResult !== 'function' || (data && checkResult(this.props)(data))) {
+      if (typeof checkResult !== 'function' || (!!data && checkResult(this.props)(data))) {
         this.setState({ data: data })
       }
     }

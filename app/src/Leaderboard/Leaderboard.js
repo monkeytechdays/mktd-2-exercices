@@ -24,7 +24,7 @@ const Board = ({data}) => {
   </div>
 }
 
-const Leaderboard = ({loading, data}) => {
+const Leaderboard = ({loading, data, location}) => {
   return <div className='leaderboard'>
     <h2>Leaderboard</h2>
     {loading
