@@ -73,7 +73,7 @@ Mais tout n'est pas réalisable avec ce mécanisme, et parfois cela peut nuire �
 Voir <https://angular.io/docs/ts/latest/guide/template-syntax.html#!#directives> en particulier le `ngIf`
  et le `ngFor`.
 
-Resources
+Ressources
 ---
 
 * [Afficher des données](https://angular.io/docs/ts/latest/guide/displaying-data.html)
@@ -81,7 +81,7 @@ Resources
 * [API ngIf](https://angular.io/docs/ts/latest/api/common/index/NgIf-directive.html)
 * [API ngFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html)
 
-### Resources supplémentaires
+### Ressources supplémentaires
 
 * [Angular2](https://angular.io/) le site officiel
 * [Angular2 CheatSheet](https://angular.io/docs/ts/latest/guide/cheatsheet.html)

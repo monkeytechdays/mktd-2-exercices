@@ -6,7 +6,7 @@ Timing: maxi 30 minutes
 Objectif
 ---
 
-Utiliser AJAX avec Angular2. 
+Utiliser AJAX avec Angular2.  
 
 A Faire
 ---

@@ -27,16 +27,16 @@ Pensez à déclarer et exporter ce Pipe dans le `app/shared/shared.module.ts`
 
 ### Jouons avec Rx
 
-Il faudrait afficher le nom du joueur quand il démarre le quizz, et pour le stresser au maximun on ajoute un chrono dans la toolbar  qui affiche chaque secondes. Pour cela nous allons devoir utiliser plus en profondeur les Observables de Rx.
+Il faudrait afficher le nom du joueur quand il démarre le quizz, et pour le stresser au maximum  on ajoute un chrono dans la toolbar  qui affiche chaque secondes. Pour cela nous allons devoir utiliser plus en profondeur les Observables de Rx.
 
 Il faut modifier le service `QuizzService` et le composant `ToolbarComponent`.
 
 voir [Rx operators](http://reactivex.io/documentation/operators.html)
 
-Resources
+Ressources
 ---
 
-### Resources supplémentaires
+### Ressources supplémentaires
 
 * [Angular2](https://angular.io/) le site officiel
 * [Angular2 CheatSheet](https://angular.io/docs/ts/latest/guide/cheatsheet.html)

@@ -1,5 +1,5 @@
 /**
- * This barrel file provides the exports for the shared resources (services, components, models).
+ * This barrel file provides the exports for the shared Ressources (services, components, models).
  */
 // Configuration
 export { Config } from './config/env.config';

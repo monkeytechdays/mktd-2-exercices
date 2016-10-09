@@ -15,7 +15,7 @@ Présentation
 ---
 
 
-Resources
+Ressources
 ---
 
 Pour aller plus loin
