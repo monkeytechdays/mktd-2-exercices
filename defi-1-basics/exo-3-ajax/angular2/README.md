@@ -6,7 +6,7 @@ Timing: maxi 30 minutes
 Objectif
 ---
 
-Utiliser AJAX avec Angular2.
+Utiliser AJAX avec Angular2. 
 
 A Faire
 ---
@@ -14,10 +14,12 @@ A Faire
 Il faut modifier le fichier `app/shared/quizz/quizz.service.ts` pour rendre le service injectable et implémenter les appels HTTP.
 Ce service est utilisé par le composant `app/quizz/question/question.component.ts`.
 
+Pour vous guider regardez les `TODO`.
+
 Vous pouvez aussi regarder le fichier `app/app.module.ts` définissant le module principale de l'application, contenant la dépendance sur le module `HttpModule` qui contient le service `Http`. Le module principale contient aussi l'injection du service `Storage` utiliser dans le `QuizzService`.
 
-Pour démarrer l'application il faut récupérer les dépendances avec `npm install`.
 
+Pour démarrer l'application il faut récupérer les dépendances avec `npm install`.
 Pour lancer en mode développement il suffit de lancer `npm start`.
 
 > Cette application a été initialisée à partir d'[angular-seed](https://mgechev.github.io/angular-seed/). Vous pouvez ultérieurement regarder plus en détail la documentation et le wiki de ce projet.

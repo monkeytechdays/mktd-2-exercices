@@ -1,0 +1,26 @@
+:host {
+  min-width: 50vw;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h2 {
+  text-align: center;
+}
+
+.leaderboard {
+  border: large solid black;
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+ul {
+  margin: 0 1rem;
+  padding: 0;
+}
+
+ul>li {
+  list-style: none;
+}

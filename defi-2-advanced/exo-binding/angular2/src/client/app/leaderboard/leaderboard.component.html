@@ -1,0 +1,11 @@
+<h2>LeaderBoard</h2>
+<div class="leaderboard">
+  <ul>
+    <li *ngFor="let result of results">
+      <mktd-quizz-result [result]="result"></mktd-quizz-result>
+    </li>
+  </ul>
+</div>
+
+<a routerLink="/quizz" class="button">Nouveau Quizz</a>
+<!--<pre>{{results | json}}</pre>-->

@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  justify-content: space-around;
+  padding: .25rem;
+  font-size: 1.25rem;
+}
+
+.userName,
+.score,
+.duration {
+  width: 30%;
+}
+
+.score {
+  text-align: center;
+}
+
+.duration {
+  text-align: right;
+}
