@@ -1,0 +1,27 @@
+<h2 *ngIf="!result">Question #{{index+1}}</h2>
+<form (submit)="next()" *ngIf="!result">
+  <div class="photo" *ngIf="photo">
+    <figure>
+      <img [src]="photo.url" [alt]="photo.attribution">
+      <figcaption>{{photo.attribution}}</figcaption>
+    </figure>
+  </div>
+  <div class="question" *ngIf="question">
+    <h2>Quel est ce singe ?</h2>
+    <div class="answers">
+      <ul>
+        <li *ngFor="let answer of question.responses; let id = index;">
+          <input [id]="id" type="radio" name="answer" [(ngModel)]="response" [value]="answer">
+          <label [htmlFor]="id">{{answer}}</label>
+        </li>
+      </ul>
+    </div>
+    <button type="submit" [disabled]="respone===null">Valider</button>
+  </div>
+</form>
+
+<pre *ngIf="result">{{result|json}}</pre>
+
+<!--<pre>{{question|json}}</pre>-->
+<!--<pre>{{photo|json}}</pre>-->
+<!--<pre>{{response}}</pre>-->

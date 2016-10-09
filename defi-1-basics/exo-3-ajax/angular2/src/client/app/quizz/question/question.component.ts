@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizzService, Photo, Question } from '../../shared/index';
+import { QuizzService, QuizzResult, Photo, Question } from '../../shared/index';
 
 @Component({
   moduleId: module.id,
@@ -12,8 +12,9 @@ export class QuestionComponent implements OnInit {
   photo: Photo;
   response: string = null;
   question: Question;
+  result: QuizzResult;
+  index: number;
   private quizzId: string;
-  private index: number;
 
   /**
    * Créer un nouveau QuestionComponent avec le service QuizzService injecté.
@@ -21,15 +22,21 @@ export class QuestionComponent implements OnInit {
    * @param {QuizzService} quizzService - le service QuizzService injecté.
    */
   constructor(private quizzService: QuizzService) {
-    this.quizzId = 'quizz-templating';
-    this.index = 0;
   }
 
   /**
    * Initialise le composant
    */
   ngOnInit() {
-    this.load();
+    // Créer un nouveau Quizz
+    this.quizzService.create('Toto')
+      .subscribe(quizz => {
+        // Aprés création du Quizz, on initialise les attributs
+        this.quizzId = quizz.id;
+        this.index = 0;
+        // puis on appel le service pour charger la question courante
+        this.load();
+      });
   }
 
   /**
@@ -43,7 +50,12 @@ export class QuestionComponent implements OnInit {
       this.index = next;
       this.load();
     } else {
-      // On est dans une version 'dégradé' de l'application, ça de doit pas arrivé
+      // On est dans une version 'dégradé' de l'application, on affiche le résultat dans la console
+      this.quizzService.sendResponses(this.quizzId)
+        .subscribe(result => {
+          console.log('Résultat', result);
+          this.result = result;
+        });
     }
     return false;
   }
