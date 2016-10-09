@@ -4,7 +4,7 @@ Hello World avec Angular2
 Timing: maxi 30 minutes
 
 ## Objectif
-Comprendre les base d'une application Angular2.
+Comprendre les bases d'une application Angular2.
 
 ## A Faire
 
@@ -35,6 +35,7 @@ En gros le plus simple c'est de suivre le [QuickStart d'Angular](https://angular
 * [API](https://angular.io/docs/ts/latest/api/)
 * [TypeScript](https://www.typescriptlang.org/) le site officiel
 * [TypeScript Playground](https://www.typescriptlang.org/play/index.html), idéal pour découvrir les principales features du langage avec le code JavaScript associé.
+* [IDE Snippets](https://angular.io/docs/ts/latest/guide/style-guide.html#!#A-02)
 
 ATTENTION il y a eu beaucoup d'évolutions dans le code d'Angular2, on peut donc facilement tomber sur des ressources obsolètes sur le Web, attention aux tutos, stackoverflow, ...
 

@@ -1,0 +1,25 @@
+:host {
+  background-color: #106cc8;
+  color: rgba(255, 255, 255, 0.87);
+  display: block;
+  height: 3rem;
+  padding: 0 1rem;
+}
+
+h1 {
+  display: inline;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 3rem;
+  cursor: pointer;
+}
+h1:hover {
+  color: #fff;
+}
+
+.info, .time {
+  float: right;
+  height: 1.5rem;
+  line-height: 3rem;
+  margin: 0 0.5rem;
+}

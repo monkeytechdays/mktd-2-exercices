@@ -1,0 +1,16 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc( 100vh - 5rem);
+}
+
+footer {
+  background: #888;
+  color: #eee;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+}

@@ -1,0 +1,24 @@
+<form> <!-- Binding de la soumission du formulaire -->
+  <div class="photo"> <!-- Afficher quand la photo est chargé -->
+    <figure>
+      <img src="" alt=""> <!-- Binding des proprités de l'image -->
+      <figcaption><!-- Ajouter l'attribution de la photo --></figcaption>
+    </figure>
+  </div>
+  <div class="question">
+    <h2>Quel est ce singe ?</h2>
+    <div class="answers">
+      <ul>
+        <li> <!-- iteration sur les réponse possible -->
+          <input type="radio" name="answer"> <!-- binding du radio boutton -->
+          <label><!-- Label associé au radio boutton --></label>
+        </li>
+      </ul>
+    </div>
+    <button type="submit">Valider</button> <!-- Binding de l'état disabled -->
+  </div>
+</form>
+
+<!--<pre>{{question|json}}</pre>-->
+<!--<pre>{{photo|json}}</pre>-->
+<!--<pre>{{response}}</pre>-->
