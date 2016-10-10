@@ -1,0 +1,5 @@
+<form (submit)="start()">
+  <input [(ngModel)]="name" name="Name" placeholder="Votre nom" required autfocus>
+  <button type="submit" [disabled]="name===''">Démarrer</button>
+</form>
+<!--<pre>{{name}}</pre>-->

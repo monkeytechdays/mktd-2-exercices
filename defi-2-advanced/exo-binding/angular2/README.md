@@ -18,12 +18,14 @@ Pour vous guider regardez les `TODO`.
 ### Composant réutilisable
 
 * Créer le composant `QuizzResultComponent` dans `app/shared/quizz-result/quizz-result.ts`. 
-Pensez  à déclarer et exporter ce composant dans le `app/shared/shared.module.ts`
+* Pensez à déclarer et exporter ce composant dans le `app/shared/shared.module.ts`
+* Utilisez ce composant dans le `app/quizz/result/result.component.html` et `app/leaderboard/leaderboard.component.html`
 
-### Pipe 
+### Pipe
 
 * Créer un Pipe pour formater la durée dans `app/shared/time/time.pipe.ts`.
-Pensez à déclarer et exporter ce Pipe dans le `app/shared/shared.module.ts`
+* Pensez à déclarer et exporter ce Pipe dans le `app/shared/shared.module.ts`
+* Utilisez ce pipe dans le composant `app/shared/quizz-result/quizz-result.html`
 
 ### Jouons avec Rx
 
