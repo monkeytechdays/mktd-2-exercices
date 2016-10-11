@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router'
+import {routerShape} from 'react-router/lib/PropTypes'
 import ServiceSubscriber from './utils/Services/ServiceSubscriber'
 import Button from './utils/View/Button'
 import './Launcher.css'
@@ -49,6 +50,16 @@ class Launcher extends React.Component {
       </div>
     )
   }
+}
+
+Launcher.propTypes = {
+  userService: React.PropTypes.shape({
+    data: React.PropTypes.string,
+    service: React.PropTypes.shape({
+      setUser: React.PropTypes.func.isRequired
+    }).isRequired
+  }).isRequired,
+  router: routerShape
 }
 
 export default ServiceSubscriber({name: 'userService'})(

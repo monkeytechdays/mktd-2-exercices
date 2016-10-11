@@ -23,24 +23,39 @@ import GetStoredData from '../Storage/GetStoredData'
  *                         Renvoie si oui ou non c'est les données que l'on s'attendait à avoir. Si
  *                         ce n'est pas le cas, le fetcher sera utilisé.
  */
-export default ({propsToRequest, addResultToProps, storageKey, propsToStorage, checkResult}) => (BaseComponent) => {
-  const FetcherComponent = Fetcher({ propsToRequest, addResultToProps })(
+export default ({propsToRequest, addResultToProps, shouldFetchAgain, storageKey, propsToStorage, checkResult}) => (BaseComponent) => {
+  const FetcherComponent = Fetcher({ propsToRequest, addResultToProps, shouldFetchAgain })(
     StoreData({ storageKey, propsToStorage })(
       BaseComponent
     )
   )
 
-  const RenderedComponent = ({ __data, ...props }) => {
-    if (__data) {
-      return <BaseComponent {...addResultToProps(props)({data: __data, loading: false})} />
-    } else {
-      return <FetcherComponent {...props} />
+  class RenderedComponent extends React.Component {
+    constructor (props) {
+      super()
+      this.state = {
+        isMemoized: !!props.__data
+      }
     }
+
+    render () {
+      const { __data, ...props } = this.props
+
+      if (this.state.isMemoized) {
+        return <BaseComponent {...addResultToProps(props)({data: __data, loading: false})} />
+      } else {
+        return <FetcherComponent {...props} />
+      }
+    }
+  }
+
+  RenderedComponent.propTypes = {
+    __data: React.PropTypes.any
   }
 
   return GetStoredData({
     storageKey,
     checkResult,
-    storageToProps: (props) => (data) => ({ ...props, __data: data }),
+    storageToProps: (props) => (data) => ({ ...props, __data: data })
   })(RenderedComponent)
 }

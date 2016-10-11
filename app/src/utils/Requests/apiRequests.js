@@ -1,69 +1,28 @@
-const API_BASE_URL = 'http://localhost:8080/api'
+/* global fetch */
+const API_BASE_URL = '/api'
 
 export const fetchLeaderboard = () => {
   return fetch(`${API_BASE_URL}/leaderboard`)
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve([
-      {
-        "score": 3,
-        "duration": 1230,
-        "username": "Plop"
-      },
-      {
-        "score": 10,
-        "duration": 2131,
-        "username": "Plop"
-      },
-      {
-        "score": 5,
-        "duration": 8023,
-        "username": "Julien"
-      },
-      {
-        "score": 35,
-        "duration": 8023,
-        "username": "Alfred"
-      },
-      {
-        "score": 1,
-        "duration": 8023,
-        "username": "Hubert²"
-      },
-      {
-        "score": 3,
-        "duration": 8023,
-        "username": "Julien2"
-      }
-    ]), 200)
-  })
+    .then((response) => response.json())
 }
 
 export const fetchQuizz = (username) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve({
-      "id": "b6797b0b-ed7c-42ec-b584-f3a39e9179c0",
-      "questions": [
-        {
-          "responses": [
-            "Orang Outan",
-            "Atèle",
-            "Hurleur du Guatemala",
-            "Chimpanzé"
-          ]
-        }, {
-          "responses": [
-            "Orang Outan",
-            "Atèle"
-          ]
-        }
-      ],
-      "username": username
-    }), 200)
-  })
+  return fetch(`${API_BASE_URL}/quizz?userName=${username}`)
+    .then((response) => response.json())
 }
 
-export const submitQuizz = (responses) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve())
+export const fetchQuestion = (quizzId, index) => {
+  return fetch(`${API_BASE_URL}/quizz/${quizzId}/${index}`)
+    .then((response) => response.json())
+}
+
+export const submitQuizz = (quizzId, responses) => {
+  return fetch(`${API_BASE_URL}/quizz/${quizzId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({responses})
   })
+    .then((response) => response.json())
 }

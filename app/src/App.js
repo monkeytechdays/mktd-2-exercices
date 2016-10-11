@@ -18,6 +18,10 @@ const App = (props) => {
   )
 }
 
+App.propTypes = {
+  children: React.PropTypes.node.isRequired
+}
+
 // C'est lui qui va permettre d'héberger le service User
 // Il serait possible de faire un singleton global qu'il suffirait d'importer.
 // Cependant, cette pratique est considérée comme mauvaise si l'on veut pouvoir

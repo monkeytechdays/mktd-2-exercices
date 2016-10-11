@@ -1,5 +1,7 @@
+/* global localStorage */
 import React from 'react'
 import {withRouter} from 'react-router'
+import {routerShape} from 'react-router/lib/PropTypes'
 import {fetchQuizz, submitQuizz} from '../utils/Requests/apiRequests'
 import MemoizedFetcher from '../utils/Requests/MemoizedFetcher'
 import ServiceSubscriber from '../utils/Services/ServiceSubscriber'
@@ -10,77 +12,94 @@ import QuizzNavigator from './QuizzNavigator'
 const RESPONSE_STORAGE_KEY = 'answers'
 const QUIZZ_STORAGE_KEY = 'quizz'
 
-const QuizzContainer = (BaseComponent) => class extends React.Component {
-  constructor (props) {
-    super()
-    this.state = {
-      answers: props.answers || [],
-      result: null
-    }
-    this.submitAnswer = this.submitAnswer.bind(this)
-    this.submitResult = this.submitResult.bind(this)
-  }
-
-  shouldComponentUpdate (nextProps) {
-    return ((this.props.quizz && this.props.quizz.id) !== (nextProps.quizz && nextProps.quizz.id))
-      || this.props.params.page !== nextProps.params.page
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.quizz && nextProps.params.id !== nextProps.quizz.id) {
-      nextProps.router.push(`/quizz/${nextProps.quizz.id}`)
-      this.setState((state) => ({
-        ...state,
-        answers: []
-      }))
-    }
-  }
-
-  submitAnswer (index, answer) {
-    this.setState(
-      (state) => {
-        // Sauvegarde de la réponse
-        const answers = [...state.answers]
-        answers[index] = answer
-
-        return { ...state, answers: answers }
+const QuizzContainer = (BaseComponent) => {
+  class QuizzContainer extends React.Component {
+    constructor (props) {
+      super()
+      this.state = {
+        answers: props.answers || [],
+        result: null
       }
-    )
+      this.submitAnswer = this.submitAnswer.bind(this)
+      this.submitResult = this.submitResult.bind(this)
+    }
+
+    shouldComponentUpdate (nextProps) {
+      return ((this.props.quizz && this.props.quizz.id) !== (nextProps.quizz && nextProps.quizz.id)) ||
+        this.props.params.page !== nextProps.params.page
+    }
+
+    componentWillReceiveProps (nextProps) {
+      if (nextProps.quizz && !nextProps.params.id) {
+        nextProps.router.push(`/quizz/${nextProps.quizz.id}`)
+        this.setState((state) => ({
+          ...state,
+          answers: []
+        }))
+      }
+    }
+
+    submitAnswer (index, answer) {
+      this.setState(
+        (state) => {
+          // Sauvegarde de la réponse
+          const answers = [...state.answers]
+          answers[index] = answer
+
+          return { ...state, answers: answers }
+        }
+      )
+    }
+
+    submitResult () {
+      // On affiche le fait qu'on soumet le formulaire en mettant à jour le résultat
+      // dans l'état du composant
+      this.setState((state) => ({
+        result: { answers: state.answers }
+      }), () => {
+        // On soumet le résultat
+        submitQuizz(this.props.quizz.id, this.state.answers)
+          .then((result) => {
+            this.props.router.push({
+              pathname: '/leaderboard',
+              state: { result: result }
+            })
+            localStorage.removeItem(RESPONSE_STORAGE_KEY)
+            localStorage.removeItem(QUIZZ_STORAGE_KEY)
+          })
+      })
+    }
+
+    render () {
+      if (this.props.loading) {
+        return <p>Démarrage en cours...</p>
+      } else {
+        return <BaseComponent
+          quizz={this.props.quizz}
+          page={parseInt(this.props.params.page, 0)}
+          onSubmitAnswer={this.submitAnswer}
+          onSubmitResult={this.submitResult}
+          result={this.state.result}
+          answers={this.state.answers}
+        />
+      }
+    }
   }
 
-  submitResult () {
-    // On affiche le fait qu'on soumet le formulaire en mettant à jour le résultat
-    // dans l'état du composant
-    this.setState((state) => ({
-      result: { answers: state.answers }
-    }), () => {
-      // On soumet le résultat
-      submitQuizz(this.props.userService.data, this.state.answers)
-        .then((result) => {
-          this.props.router.push({
-            pathname: '/leaderboard',
-            state: { result: result }
-          })
-          localStorage.removeItem(RESPONSE_STORAGE_KEY)
-          localStorage.removeItem(QUIZZ_STORAGE_KEY)
-        })
+  QuizzContainer.propTypes = {
+    answers: React.PropTypes.array,
+    quizz: React.PropTypes.object,
+    loading: React.PropTypes.bool.isRequired,
+    params: React.PropTypes.shape({
+      page: React.PropTypes.string
+    }),
+    router: routerShape,
+    userService: React.PropTypes.shape({
+      data: React.PropTypes.string
     })
   }
 
-  render () {
-    if (this.props.loading) {
-      return <p>Démarrage en cours...</p>
-    } else {
-      return <BaseComponent
-        quizz={this.props.quizz}
-        page={parseInt(this.props.params.page, 0)}
-        onSubmitAnswer={this.submitAnswer}
-        onSubmitResult={this.submitResult}
-        result={this.state.result}
-        answers={this.state.answers}
-      />
-    }
-  }
+  return QuizzContainer
 }
 
 export default (
@@ -93,6 +112,7 @@ export default (
           loading: loading,
           quizz: data
         }),
+        shouldFetchAgain: (props) => !props.quizz,
         storageKey: QUIZZ_STORAGE_KEY,
         propsToStorage: (props) => props.quizz,
         checkResult: (props) => (data) => data.id === props.params.id

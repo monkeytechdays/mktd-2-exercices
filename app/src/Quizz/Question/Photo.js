@@ -1,7 +1,17 @@
 import React from 'react'
 
-export default (props) => (
-  <div className="question-photo">
-    <img src={props.photo} alt={props.label} />
+const Photo = (props) => (
+  <div className='question-photo'>
+    {props.loading
+      ? <div>Chargement de l'image en cours...</div>
+      : <img src={props.src} alt={props.alt} />}
   </div>
 )
+
+Photo.propTypes = {
+  src: React.PropTypes.string,
+  alt: React.PropTypes.string,
+  loading: React.PropTypes.bool.isRequired
+}
+
+export default Photo

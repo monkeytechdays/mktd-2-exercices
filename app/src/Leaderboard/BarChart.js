@@ -5,7 +5,7 @@ const maxWidth = 400
 const maxHeight = 200
 const heightSecurity = 40
 
-export default (props) => {
+const BarChart = (props) => {
   const maxValue = props.data.reduce((maxValue, {value}) => Math.max(maxValue, value), 0)
   const sliceWidth = maxWidth / props.data.length
   const margin = sliceWidth / 8
@@ -15,7 +15,7 @@ export default (props) => {
     <StaggeredMotion
       defaultStyles={
         props.data.map(({value}, index) => ({
-          ratio: 0,
+          ratio: 0
         }))
       }
       styles={(prevInterpolatedStyles) => prevInterpolatedStyles.map((style, i) => {
@@ -56,10 +56,9 @@ export default (props) => {
     </StaggeredMotion>
   </svg>
 }
-//
-// To rotate use transform="rotate(deg, cx, cy)", where deg is the degree you want to rotate and (cx, cy) define the centre of rotation.
-//
-// For scaling/resizing, you have to translate by (-cx, -cy), then scale and then translate back to (cx, cy). You can so this with a matrix transform:
-//
-// transform="matrix(sx, 0, 0, sy, cx-sx*cx, cy-sy*cy)"
-// Where sx is the scaling factor in the x-axis, sy in the y-axis.
+
+BarChart.propTypes = {
+  data: React.PropTypes.array.isRequired
+}
+
+export default BarChart

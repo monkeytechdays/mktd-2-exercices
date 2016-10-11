@@ -14,7 +14,8 @@ class QuizzNavigator extends React.Component {
     // est possible de déterminer si oui ou non l'affichage du composant va changer
     // Ainsi, shouldComponentUpdate permet de définir s'il est nécessaire de relancer
     // un rendu
-    return this.props.page !== nextProps.page || this.props.answers[this.props.page] !== nextProps.answers[nextProps.page]
+    return this.props.page !== nextProps.page ||
+      this.props.answers[this.props.page] !== nextProps.answers[nextProps.page]
   }
 
   componentWillMount () {
@@ -56,15 +57,28 @@ class QuizzNavigator extends React.Component {
       const currentQuestion = this.props.quizz.questions[page]
 
       return <Question
+        quizz={this.props.quizz}
+        index={page}
         question={currentQuestion}
         answer={this.props.answers[page] || null}
-        img={`/${this.props.quizz.id}/${page}`}
+        img={`/api/quizz/${this.props.quizz.id}/${page}`}
         onSubmitAnswer={this.submitAnswer}
       />
     } else {
       return <p>Soumission du formulaire...</p>
     }
   }
+}
+
+QuizzNavigator.propTypes = {
+  page: React.PropTypes.number.isRequired,
+  quizz: React.PropTypes.shape({
+    questions: React.PropTypes.array.isRequired,
+    id: React.PropTypes.string.isRequired
+  }).isRequired,
+  answers: React.PropTypes.array.isRequired,
+  onSubmitAnswer: React.PropTypes.func.isRequired,
+  onSubmitResult: React.PropTypes.func.isRequired
 }
 
 export default withRouter(QuizzNavigator)

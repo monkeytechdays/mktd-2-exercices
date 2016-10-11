@@ -1,3 +1,9 @@
 import React from 'react'
 
-export default (props) => <h3 className='legend'>{props.children}</h3>
+const Legend = (props) => <h3 className='legend'>{props.children}</h3>
+
+Legend.propTypes = {
+  children: React.PropTypes.node.isRequired
+}
+
+export default Legend

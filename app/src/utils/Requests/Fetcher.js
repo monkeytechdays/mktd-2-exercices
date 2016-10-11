@@ -16,7 +16,7 @@ import Rx from 'rxjs/Rx'
  *                          Le Composant que vous voulez étendre (celui qui aura le résultat de la requête).
  */
 
-export default ({ propsToRequest, addResultToProps }) => (BaseComponent) => {
+export default ({ propsToRequest, addResultToProps, shouldFetchAgain }) => (BaseComponent) => {
   if (!addResultToProps) {
     addResultToProps = (props) => ({data, loading, refreshing}) => ({
       ...props,
@@ -24,6 +24,10 @@ export default ({ propsToRequest, addResultToProps }) => (BaseComponent) => {
       loading,
       refreshing
     })
+  }
+
+  if (!shouldFetchAgain) {
+    shouldFetchAgain = () => true
   }
 
   return class Fetcher extends React.Component {
@@ -40,9 +44,9 @@ export default ({ propsToRequest, addResultToProps }) => (BaseComponent) => {
       this.fetchData(this.props)
     }
 
-    componentWillUpdate (props) {
-      if (this.props !== props) {
-        this.fetchData(props)
+    componentWillUpdate (nextProps, nextState) {
+      if (this.props !== nextProps && shouldFetchAgain(addResultToProps(this.props)(this.state), addResultToProps(nextProps)(nextState))) {
+        this.fetchData(nextProps)
       }
     }
 
@@ -71,7 +75,7 @@ export default ({ propsToRequest, addResultToProps }) => (BaseComponent) => {
        * ```
        */
       this.currentRequest = Rx.Observable
-        .fromPromise(propsToRequest(this.props))
+        .fromPromise(propsToRequest(props))
         .do((data) => this.setState((state) => ({
           loading: false,
           refreshing: false,

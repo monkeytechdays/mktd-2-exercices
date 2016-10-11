@@ -1,5 +1,8 @@
+.question-photo {
+  text-align: center;
+}
 .question-photo img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .question h2 {
@@ -16,14 +19,17 @@
 
   .question-photo {
     flex: 3;
+    margin: 1em;
+  }
+
+  .question-photo img {
+    max-height: 400px;
   }
 
   .question-content {
     flex: 2;
+    margin: 1em;
   }
-}
-
-.question-form {
 }
 
 .question-form .answers {

@@ -42,11 +42,24 @@ class Form extends React.Component {
   }
 }
 
+Form.propTypes = {
+  answer: React.PropTypes.string,
+  answers: React.PropTypes.array.isRequired,
+  onSubmit: React.PropTypes.func.isRequired
+}
+
 const Content = (props) => (
-  <div className="question-content">
+  <div className='question-content'>
     <h2>{props.label}</h2>
     <Form answers={props.answers} answer={props.answer} onSubmit={props.onSubmit} />
   </div>
 )
+
+Content.propTypes = {
+  label: React.PropTypes.string,
+  answer: React.PropTypes.string,
+  answers: React.PropTypes.array.isRequired,
+  onSubmit: React.PropTypes.func.isRequired
+}
 
 export default Content
