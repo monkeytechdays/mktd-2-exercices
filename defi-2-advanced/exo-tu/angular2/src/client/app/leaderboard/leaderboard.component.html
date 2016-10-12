@@ -1,0 +1,13 @@
+<h2>LeaderBoard</h2>
+<div class="leaderboard">
+  <ul>
+    <li *ngFor="let result of results">
+      <div class="userName">{{result.userName}}</div>
+      <div class="score">{{result.score}}</div>
+      <div class="duration">{{result.duration}}</div>
+    </li>
+  </ul>
+</div>
+
+<a routerLink="/quizz" class="button">Nouveau Quizz</a>
+<!--<pre>{{results | json}}</pre>-->

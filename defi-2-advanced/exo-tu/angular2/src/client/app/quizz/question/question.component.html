@@ -1,0 +1,22 @@
+<form (submit)="next()" #questionForm="ngForm">
+  <div class="photo" *ngIf="photo">
+    <figure>
+      <img [src]="photo.url" [alt]="photo.attribution">
+      <figcaption>{{photo.attribution}}</figcaption>
+    </figure>
+  </div>
+  <div class="question">
+    <h2>Quel est ce singe ?</h2>
+    <div class="answers">
+      <ul>
+        <li *ngFor="let answer of question.responses; let id = index;">
+          <input [id]="id" type="radio" name="answer" [(ngModel)]="response" [value]="answer">
+          <label [htmlFor]="id">{{answer}}</label>
+        </li>
+      </ul>
+    </div>
+    <button type="submit" [disabled]="respone===null">Valider</button>
+  </div>
+</form>
+<!--<pre>{{question|json}}</pre>-->
+<!--<pre>{{response}}</pre>-->
