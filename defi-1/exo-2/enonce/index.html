@@ -1,17 +1,306 @@
-<!doctype html>
-<html lang="fr">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>MKTD#2: React</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="./style/main.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <title>React App</title>
+    <style type="text/css">.layout {
+        background: white;
+        color: #333;
+        font-family: sans-serif;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        height: 100vh;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .header {
+        background: #3eb5ee;
+        color: white;
+        padding: 1em 2em;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .header a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .main {
+        margin: 1em 2em;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .footer {
+        background: #888;
+        padding: 0.5em 2em;
+        color: #eee;
+        text-align: center;
+    }
+
+    @media screen and (min-width: 800px) {
+        .main {
+            width: 800px;
+            margin: 2em auto;
+        }
+    }
+    </style>
+    <style type="text/css">.button {
+        min-width: 200px;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        font-weight: bold;
+        color: white;
+        background: #3eb5ee;
+        border: 0;
+        border-bottom: 2px solid #6494c1;
+        border-top: 1px solid white;
+        border-radius: 0.3em;
+    }
+
+    .button:not([disabled]) {
+        cursor: pointer;
+    }
+
+    .button[disabled] {
+        background: #aaa;
+        border-top-color: #888;
+        border-bottom-color: white;
+    }
+
+    .button:not([disabled]):hover, .button:not([disabled]):focus {
+        padding-top: calc(0.5em - 1px);
+        border-bottom-width: 3px;
+        border-top-color: #3eb5ee;
+    }
+
+    .button:active {
+        border-top-width: 2px;
+        border-bottom-width: 1px;
+    }
+    </style>
+    <style type="text/css">.launcher {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        height: 80%;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .launcher h2 {
+        font-size: 2em;
+    }
+
+    .launcher label {
+        opacity: 0;
+    }
+
+    .launcher input {
+        font-size: 1em;
+        padding: 0.5em;
+        border: 1px solid #aaa;
+        border-radius: 0.3em;
+        text-align: center;
+        display: block;
+        margin: 0.5em auto;
+        box-sizing: border-box;
+        width: 250px;
+    }
+
+    .launcher .button {
+        width: 250px;
+    }
+
+    @media screen and (min-width: 500px) {
+        .launcher h2 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+    }
+    </style>
+    <style type="text/css">.leaderboard {
+        margin: 10vh auto 0;
+        max-width: 400px;
+    }
+
+    .leaderboard h2 {
+        font-size: 1.5em;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    svg.reversed {
+    }
+
+    .scoreBar {
+        fill: #3eb5ee;
+    }
+
+    .scoreBar-score {
+        fill: white;
+    }
+
+    .legend {
+        margin: 1em 0;
+        text-align: center;
+    }
+    </style>
+    <style type="text/css">.question-photo {
+        text-align: center;
+    }
+
+    .question-photo img {
+        max-width: 100%;
+    }
+
+    .question h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0.5em 0;
+    }
+
+    @media screen and (min-width: 600px) {
+        .question {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .question-photo {
+            -webkit-box-flex: 3;
+            -webkit-flex: 3;
+            -ms-flex: 3;
+            flex: 3;
+            margin: 1em;
+        }
+
+        .question-photo img {
+            max-height: 400px;
+        }
+
+        .question-content {
+            -webkit-box-flex: 2;
+            -webkit-flex: 2;
+            -ms-flex: 2;
+            flex: 2;
+            margin: 1em;
+        }
+    }
+
+    .question-form .answers {
+        margin: 1em 0;
+        margin-left: 1em;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .question-form .answers label {
+        margin: 0.5em 0;
+    }
+
+    .question-form .answers input {
+        margin-right: 1em;
+    }
+    </style>
+    <style type="text/css"></style>
 </head>
-
 <body>
+<div id="root">
+    <div data-reactroot="" class="layout">
+        <header class="header">
+            <div class="brand"><a href="/"><h1>Monkey Quizz</h1></a></div>
+            <div class="user">Pierre</div>
+        </header>
+        <main class="main">
+            <div class="question">
+                <div class="question-photo"><img
+                        src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Erythrocebus-patas-patas-Burkina-faso.JPG"
+                        alt="Singe mystérieux."></div>
+                <div class="question-content">
+                    <h2>Quel est ce singe ?</h2>
+                    <form class="question-form">
+                        <div class="answers">
+                            <label>
+                                <input type="radio" name="answer" value="Patas">
+                                Patas
+                            </label>
+                            <label>
+                                <input type="radio"
+                                       name="answer"
+                                       value="Babouin anubis ">
+                                Babouin anubis
+                            </label>
+                            <label>
+                                <input type="radio"
+                                       name="answer"
+                                       value="Douc">
+                                Douc
+                            </label>
+                            <label>
+                                <input type="radio"
+                                       name="answer"
+                                       value="Tamarin aux mains rousses">
+                                Tamarin aux mains rousses
+                            </label></div>
+                        <button type="submit" class="button" disabled="">Valider</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="footer"><span>MKTD#2: Explore Modern Front-End</span></footer>
+    </div>
+</div>
 </body>
-
 </html>
