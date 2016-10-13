@@ -18,11 +18,11 @@ const INLINE_OPTIONS = {
  */
 
 export = () => {
-  let tsProject = makeTsProject();
+  let tsProject = makeTsProject({}, Config.TMP_DIR);
   let src = [
     Config.TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(Config.TMP_DIR, '**/*.ts'),
-    '!' + join(Config.TMP_DIR, `**/${Config.BOOTSTRAP_FACTORY_PROD_MODULE}.ts`)
+    '!' + join(Config.TMP_DIR, `**/${Config.NG_FACTORY_FILE}.ts`)
   ];
   let result = gulp.src(src)
     .pipe(plugins.plumber())
