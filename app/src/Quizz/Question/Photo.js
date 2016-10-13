@@ -4,7 +4,7 @@ const Photo = (props) => (
   <div className='question-photo'>
     {props.loading
       ? <div>Chargement de l'image en cours...</div>
-      : <img src={props.src} alt={props.alt} />}
+      : <img src={props.src} alt='Singe mystérieux.' />}
   </div>
 )
 

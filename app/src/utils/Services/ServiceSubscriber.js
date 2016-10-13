@@ -9,10 +9,9 @@ import React from 'react'
  * La plupart du temps, vous n'aurez besoin que d'un petit service ou d'utiliser
  * La notion de contexte dans React.
  *
- * Cet HOC expose donc un Service dans le contexte d'un composant. C'est l'utilisation
- * Primaire que l'on peut avoir d'un HOC : Dependency Injection
- * Evitez autant se faire se peut de passer un état dans votre contexte. Sinon,
- * vous risquez d'avoir des conflits avec des shouldComponentUpdate un peu trop violents
+ * Cet HOC permet donc de s'enregistrer à un service et d'en écouter les données
+ * et de les transformer en donnant accès au service dans les propriétés du composant
+ * fils (cf. render)
  *
  * @param name    string
  *                Le nom du service que vous souhaitez récupérer
@@ -50,6 +49,7 @@ export default({name}) => (BaseComponent) => {
     render () {
       const props = {
         ...this.props,
+        // On ajoute le service dans les propriétés
         [name]: {
           service: this.context[name],
           data: this.state.data

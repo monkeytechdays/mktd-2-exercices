@@ -1,6 +1,12 @@
 /* global fetch */
 const API_BASE_URL = '/api'
 
+/*
+ * Ici on recense l'ensemble des requêtes qui peuvent être utiles à l'application
+ * Nous utilisons l'API fetch qui est très pratique pour faire des requêtes HTTP
+ * https://github.com/github/fetch
+ */
+
 export const fetchLeaderboard = () => {
   return fetch(`${API_BASE_URL}/leaderboard`)
     .then((response) => response.json())

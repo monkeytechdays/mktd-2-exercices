@@ -2,6 +2,14 @@ import React from 'react'
 import {withRouter} from 'react-router'
 import Question from './Question'
 
+/*
+ * Le but du QuizzNavigator est uniquement de gérer la position de la question affichée
+ * Celui-ci utilise l'URL pour choisir la question à afficher. cf. goToQuestion
+ * Cela dit, il pourrait tout à fait stocker plus naivement l'index dans son state
+ * et s'en contenter
+ * Il n'y aurait donc pas besoin de s'embêter avec les méthodes de lifecycle. On n'aurait
+ * que : constructor, goToQuestion, submitAnswer et render
+ */
 class QuizzNavigator extends React.Component {
   constructor (props) {
     super()
@@ -10,10 +18,12 @@ class QuizzNavigator extends React.Component {
   }
 
   shouldComponentUpdate (nextProps) {
-    // Une grande partie de la performance que propose React vient du fait qu'il
-    // est possible de déterminer si oui ou non l'affichage du composant va changer
-    // Ainsi, shouldComponentUpdate permet de définir s'il est nécessaire de relancer
-    // un rendu
+    /*
+     * Une grande partie de la performance que propose React vient du fait qu'il
+     * est possible de déterminer si oui ou non l'affichage du composant va changer
+     * Ainsi, shouldComponentUpdate permet de définir s'il est nécessaire de relancer
+     * un rendu
+     */
     return this.props.page !== nextProps.page ||
       this.props.answers[this.props.page] !== nextProps.answers[nextProps.page]
   }

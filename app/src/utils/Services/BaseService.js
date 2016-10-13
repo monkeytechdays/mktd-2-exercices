@@ -1,3 +1,9 @@
+/*
+ * Cette base de service est ce qui va permettre au service de notifier les subscribers
+ * d'une mise à jour de donnée.
+ * Il est écrit de manière fonctionnelle, mais vous pouvez voir cela comme une classe
+ * abstraite si vous préférez une approche objet.
+ */
 export default () => {
   let subscriptions = []
 

@@ -13,7 +13,7 @@ class Form extends React.Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
 
-  componentWillUpdate (props) {
+  componentWillReceiveProps (props) {
     if (this.props !== props) {
       this.setState({
         answer: props.answer || null
@@ -35,7 +35,11 @@ class Form extends React.Component {
   render () {
     return (
       <form onSubmit={this.onSubmit} className='question-form'>
-        <AnswerList answers={this.props.answers} selected={this.state.answer} onSelectAnswer={this.onSelectAnswer} />
+        <AnswerList
+          answers={this.props.answers}
+          selected={this.state.answer}
+          onSelectAnswer={this.onSelectAnswer}
+        />
         <Button disabled={!this.state.answer}>Valider</Button>
       </form>
     )

@@ -5,6 +5,10 @@ import ServiceSubscriber from './utils/Services/ServiceSubscriber'
 import Button from './utils/View/Button'
 import './Launcher.css'
 
+/*
+ * Le launcher est la page d'accueil du site
+ * Il permet uniquement de lancer un quizz
+ */
 class Launcher extends React.Component {
   constructor () {
     super()
@@ -44,7 +48,7 @@ class Launcher extends React.Component {
           <form onSubmit={this.onSubmit}>
             <label htmlFor='username'>Pseudo</label>
             <input name='username' id='username' value={this.state.username} onChange={this.onChange('username')} />
-            <Button>Démarrer un quizz</Button>
+            <Button>C'est parti monkey quizz !</Button>
           </form>
         </div>
       </div>

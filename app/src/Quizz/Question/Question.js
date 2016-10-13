@@ -8,8 +8,13 @@ const label = 'Quel est ce singe ?'
 
 const Question = (props) => (
   <div className='question'>
-    <Photo loading={props.loading} src={props.image && props.image.url} alt={props.image && props.image.attribution} />
-    <Content label={label} answers={props.question.responses} answer={props.answer} onSubmit={props.onSubmitAnswer} />
+    <Photo loading={props.loading} src={props.image && props.image.url} />
+    <Content
+      label={label}
+      answers={props.question.responses}
+      answer={props.answer}
+      onSubmit={props.onSubmitAnswer}
+    />
   </div>
 )
 

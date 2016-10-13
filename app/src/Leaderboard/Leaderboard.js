@@ -14,13 +14,14 @@ const Board = ({data}) => {
 
   const totalScoreByUser = data.reduce((scoreByUser, {userName, score}) => ({
     ...scoreByUser,
-    [userName]: score + (scoreByUser[userName] || 0)
+    [userName]: {score}
   }), {})
 
   const totalScoreArray = Object.keys(totalScoreByUser)
     .map((key) => ({
       label: key,
-      value: totalScoreByUser[key]
+      value: totalScoreByUser[key].score,
+      time: totalScoreByUser[key].time
     }))
     .sort(({value: valueA}, {value: valueB}) => valueB - valueA)
 
@@ -34,12 +35,13 @@ const Leaderboard = ({loading, data, location}) => {
   return <div className='leaderboard'>
     <h2>Leaderboard</h2>
 
+    {/* Affiche le score précédent s'il existe (cf. QuizzContainer::submitResult) */}
     {location.state && location.state.result && <Legend>
-      Bravo ! Vous avez eu {location.state.result.score} points
+      Bravo ! Vous avez eu {location.state.result.score} points en {location.state.result.time} secondes
     </Legend>}
 
     {loading
-      ? <p>Chargement en cours...</p>
+      ? <p>Chargement du classement...</p>
       : <Board data={data} />}
   </div>
 }

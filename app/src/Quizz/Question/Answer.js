@@ -1,9 +1,15 @@
 import React from 'react'
 
-const Answer = ({answer, selected, onSelect}) => (
-  <label key={answer}>
-    <input type='radio' name='answer' value={answer} checked={selected} onChange={onSelect} />
-    {answer}
+const Answer = (props) => (
+  <label key={props.answer}>
+    <input
+      type='radio'
+      name='answer'
+      value={props.answer}
+      checked={props.selected}
+      onChange={props.onSelect}
+    />
+    {props.answer}
   </label>
 )
 
