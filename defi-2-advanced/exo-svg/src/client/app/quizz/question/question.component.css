@@ -1,0 +1,38 @@
+form {
+  display: flex;
+  justify-content: center;
+}
+
+/* Figure */
+figure img {
+  max-height: 50vh;
+}
+figure figcaption {
+  max-width: 50vw;
+}
+
+/* Question */
+.question {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.question h2 {
+  font-size: 1.5rem;
+}
+
+.question .answers {
+  display: flex;
+  flex-direction: column;
+}
+.question .answers ul{
+  padding: 0;
+}
+.question .answers ul li{
+  list-style: none;
+}
+.question .answers label {
+  margin: .5rem 0;
+}
